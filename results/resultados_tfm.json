@@ -1,0 +1,335 @@
+{
+  "schema_version": "1.0",
+  "proyecto": {
+    "titulo": "Red Neuronal Cuántica Híbrida para la Predicción de Estructura de Proteínas",
+    "autor": "Marco Antonio Roca Rodríguez",
+    "tipo": "Trabajo Fin de Máster",
+    "tema": "Predicción de contactos y estructura tridimensional de proteínas mediante una red neuronal híbrida clásica-cuántica",
+    "dataset": "ProteinNet CASP11",
+    "semilla": 42,
+    "nota": "Resultados extraídos de las salidas guardadas en el notebook TFM_QNN.ipynb. Las métricas corresponden a las ejecuciones registradas en ese notebook."
+  },
+  "estado": "plantilla_preparada; faltan los resultados medidos de la corrida final y de las dos replicas",
+  "corrida_final": {
+    "estado": "pendiente_de_ejecucion_o_de_importar_resultados",
+    "configuracion_objetivo": {
+      "dataset": "ProteinNet CASP11",
+      "training_set": "training_100",
+      "proteinas_entrenamiento": 15000,
+      "pares_por_bin": 40000,
+      "numero_bins": 5,
+      "pares_objetivo_total": 200000,
+      "evaluacion_contactos_proteinas": 224,
+      "evaluacion_estructura_3d_proteinas": 30
+    },
+    "semilla": "pendiente_de_confirmar",
+    "fecha_ejecucion": null,
+    "metricas_contactos": null,
+    "metricas_estructura_3d": null,
+    "artefactos": []
+  },
+  "replicas": [
+    {
+      "id": "replica_1",
+      "estado": "pendiente",
+      "semilla": null,
+      "configuracion": null,
+      "metricas_contactos": null,
+      "metricas_estructura_3d": null,
+      "artefactos": []
+    },
+    {
+      "id": "replica_2",
+      "estado": "pendiente",
+      "semilla": null,
+      "configuracion": null,
+      "metricas_contactos": null,
+      "metricas_estructura_3d": null,
+      "artefactos": []
+    }
+  ],
+  "ejecucion_anterior_no_final": {
+    "proyecto": {
+      "titulo": "Red Neuronal Cuántica Híbrida para la Predicción de Estructura de Proteínas",
+      "autor": "Marco Antonio Roca Rodríguez",
+      "tipo": "Trabajo Fin de Máster",
+      "tema": "Predicción de contactos y estructura tridimensional de proteínas mediante una red neuronal híbrida clásica-cuántica",
+      "dataset": "ProteinNet CASP11",
+      "semilla": 42,
+      "nota": "Resultados extraídos de las salidas guardadas en el notebook TFM_QNN.ipynb. Las métricas corresponden a las ejecuciones registradas en ese notebook."
+    },
+    "configuracion": {
+      "proteinas_entrenamiento": 5000,
+      "proteinas_disponibles_en_fichero_entrenamiento": 87573,
+      "pares_entrenamiento": 100000,
+      "pares_por_bin": 20000,
+      "epocas_maximas": 120,
+      "paciencia_early_stopping": 10,
+      "dropout": 0.5,
+      "weight_decay": 0.01,
+      "dispositivo": "CUDA",
+      "gpu": "NVIDIA GeForce RTX 5070 Ti",
+      "modelo_de_lenguaje": "ESM-2 t12 35M UR50D",
+      "atencion_por_par": true,
+      "mapa_de_contactos_ESM_como_caracteristica": false,
+      "evaluacion_contactos_proteinas": 224,
+      "evaluacion_estructura_3d_proteinas": 30
+    },
+    "arquitectura_cuantica": {
+      "ansatz": "MERA",
+      "qubits": 12,
+      "parametros_cuanticos": 312,
+      "dimensiones_salida_circuito": 27,
+      "parametros_totales_modelo_hibrido": 45103,
+      "descripcion_salida": "12 expectativas Z + 9 expectativas ZZ + 3 expectativas X + 3 expectativas Y"
+    },
+    "entrenamiento": {
+      "ejecucion_modelo_principal": {
+        "epoca_early_stopping": 13,
+        "mejor_epoca_segun_loss_validacion": 3,
+        "mejor_loss_validacion": 2.8171,
+        "accuracy_validacion_en_mejor_epoca": 0.3613,
+        "loss_entrenamiento_ultima_epoca_registrada": 2.7944,
+        "accuracy_entrenamiento_ultima_epoca_registrada": 0.3734
+      },
+      "ablacion_cuantica": {
+        "hibrido_cuantico": {
+          "epoca_early_stopping": 17,
+          "mejor_loss_validacion_registrada": 2.8178,
+          "mejor_accuracy_validacion_registrada": 0.3622
+        },
+        "baseline_clasico_lineal": {
+          "epoca_early_stopping": 13,
+          "mejor_loss_validacion_registrada": 2.8168,
+          "mejor_accuracy_validacion_registrada": 0.3628
+        }
+      }
+    },
+    "metricas_contactos": {
+      "definiciones": {
+        "P@L": "Precisión entre los L contactos seleccionados con mayor puntuación",
+        "P@L/2": "Precisión entre los L/2 contactos seleccionados con mayor puntuación",
+        "P@L/5": "Precisión entre los L/5 contactos seleccionados con mayor puntuación",
+        "P@L/10": "Precisión entre los L/10 contactos seleccionados con mayor puntuación",
+        "R@L/5": "Recall entre los L/5 contactos seleccionados con mayor puntuación",
+        "F1@L/5": "F1 entre los L/5 contactos seleccionados con mayor puntuación",
+        "MCC": "Coeficiente de correlación de Matthews",
+        "Xd": "Factor de enriquecimiento reportado por el notebook",
+        "AUC": "Área bajo la curva ROC",
+        "densidad": "Densidad de contactos de referencia reportada por el notebook"
+      },
+      "evaluacion_modelo_hibrido_principal": {
+        "short_6_11": {
+          "P@L": 0.8601,
+          "P@L/2": 0.8712,
+          "P@L/5": 0.8807,
+          "P@L/10": 0.8807,
+          "R@L/5": 0.0535,
+          "F1@L/5": 0.0985,
+          "MCC": 0.097,
+          "Xd": 4.07,
+          "AUC": 0.805,
+          "densidad": 0.6547
+        },
+        "medium_12_23": {
+          "P@L": 0.3875,
+          "P@L/2": 0.3985,
+          "P@L/5": 0.4068,
+          "P@L/10": 0.4069,
+          "R@L/5": 0.0434,
+          "F1@L/5": 0.0763,
+          "MCC": 0.069,
+          "Xd": 3.65,
+          "AUC": 0.34,
+          "densidad": 0.224
+        },
+        "long_ge_24": {
+          "P@L": 0.1027,
+          "P@L/2": 0.1011,
+          "P@L/5": 0.1018,
+          "P@L/10": 0.1025,
+          "R@L/5": 0.0203,
+          "F1@L/5": 0.0312,
+          "MCC": 0.017,
+          "Xd": 1.84,
+          "AUC": 0.096,
+          "densidad": 0.0619
+        }
+      },
+      "comparativa_P_at_L5": {
+        "Hibrido cuantico MERA 12q": {
+          "short_6_11": 0.8807,
+          "medium_12_23": 0.4068,
+          "long_ge_24": 0.1018
+        },
+        "Baseline ESM-2 sin entrenar": {
+          "short_6_11": 0.6985,
+          "medium_12_23": 0.2496,
+          "long_ge_24": 0.0887
+        },
+        "Hibrido cuantico MERA ablacion": {
+          "short_6_11": 0.8907,
+          "medium_12_23": 0.3816,
+          "long_ge_24": 0.098
+        },
+        "Baseline clasico Linear": {
+          "short_6_11": 0.8876,
+          "medium_12_23": 0.4083,
+          "long_ge_24": 0.1051
+        }
+      },
+      "comparativa_detallada_long_range_ge_24": {
+        "Hibrido cuantico principal": {
+          "P@L": 0.1027,
+          "P@L/2": 0.1011,
+          "P@L/5": 0.1018,
+          "P@L/10": 0.1025,
+          "R@L/5": 0.0203,
+          "MCC": 0.017,
+          "Xd": 1.84,
+          "AUC": 0.096
+        },
+        "Baseline ESM-2 sin entrenar": {
+          "P@L": 0.0863,
+          "P@L/2": 0.0867,
+          "P@L/5": 0.0887,
+          "P@L/10": 0.0875,
+          "R@L/5": 0.0087,
+          "MCC": 0.007,
+          "Xd": 0.99,
+          "AUC": 0.082
+        },
+        "Hibrido cuantico MERA ablacion": {
+          "P@L": 0.0971,
+          "P@L/2": 0.0995,
+          "P@L/5": 0.098,
+          "P@L/10": 0.0945,
+          "R@L/5": 0.0158,
+          "MCC": 0.015,
+          "Xd": 1.44,
+          "AUC": 0.092
+        },
+        "Baseline clasico Linear": {
+          "P@L": 0.1031,
+          "P@L/2": 0.103,
+          "P@L/5": 0.1051,
+          "P@L/10": 0.1064,
+          "R@L/5": 0.016,
+          "MCC": 0.016,
+          "Xd": 1.79,
+          "AUC": 0.095
+        }
+      }
+    },
+    "metricas_estructura_3d": {
+      "unidad_rmsd": "angstrom",
+      "unidad_gdt_ts_gdt_ha_tm_score_lddt": "fraccion",
+      "evaluacion": "30 proteínas",
+      "Hibrido cuantico principal": {
+        "RMSD": 13.99,
+        "GDT_TS_media": 0.122,
+        "GDT_TS_desviacion": 0.119,
+        "GDT_HA": 0.031,
+        "TM_score_media": 0.23,
+        "TM_score_desviacion": 0.098,
+        "lDDT": 0.365,
+        "GDT_TS_por_umbral": {
+          "hasta_1_angstrom": 0.003,
+          "hasta_2_angstrom": 0.018,
+          "hasta_4_angstrom": 0.103,
+          "hasta_8_angstrom": 0.364
+        }
+      },
+      "Hibrido cuantico MERA ablacion": {
+        "RMSD": 14.06,
+        "GDT_TS_media": 0.12,
+        "GDT_TS_desviacion": 0.116,
+        "GDT_HA": 0.031,
+        "TM_score_media": 0.229,
+        "TM_score_desviacion": 0.096,
+        "lDDT": 0.363,
+        "GDT_TS_por_umbral": {
+          "hasta_1_angstrom": 0.004,
+          "hasta_2_angstrom": 0.022,
+          "hasta_4_angstrom": 0.098,
+          "hasta_8_angstrom": 0.357
+        }
+      },
+      "Baseline clasico Linear": {
+        "RMSD": 14.13,
+        "GDT_TS_media": 0.114,
+        "GDT_TS_desviacion": 0.112,
+        "GDT_HA": 0.027,
+        "TM_score_media": 0.223,
+        "TM_score_desviacion": 0.094,
+        "lDDT": 0.365,
+        "GDT_TS_por_umbral": {
+          "hasta_1_angstrom": 0.003,
+          "hasta_2_angstrom": 0.019,
+          "hasta_4_angstrom": 0.086,
+          "hasta_8_angstrom": 0.349
+        }
+      }
+    },
+    "comparacion_CASP": {
+      "metrica": "P@L/5 en contactos de largo alcance (separación >=24)",
+      "nota": "Las cifras CASP del notebook corresponden a dominios de modelado libre y métodos que emplean alineamientos múltiples de secuencias (MSA); este trabajo opera con secuencia individual en inferencia.",
+      "referencias_reportadas": {
+        "CASP11_CONSIP2_mejor_grupo": {
+          "P@L/5": 0.27,
+          "usa_MSA": true
+        },
+        "CASP12_mejor_grupo": {
+          "P@L/5": 0.47,
+          "usa_MSA": true
+        },
+        "CASP13_mejor_grupo": {
+          "P@L/5": 0.7,
+          "usa_MSA": true
+        },
+        "CASP14_mejor_grupo": {
+          "P@L/5": 0.82,
+          "usa_MSA": true
+        }
+      },
+      "modelos_del_trabajo": {
+        "Baseline clasico Linear": {
+          "P@L/5": 0.1051,
+          "usa_MSA": false
+        },
+        "Hibrido cuantico MERA 12q": {
+          "P@L/5": 0.1018,
+          "usa_MSA": false
+        },
+        "Hibrido cuantico MERA ablacion": {
+          "P@L/5": 0.098,
+          "usa_MSA": false
+        },
+        "Baseline ESM-2 sin entrenar": {
+          "P@L/5": 0.0887,
+          "usa_MSA": false
+        }
+      }
+    },
+    "conclusion_ablacion": {
+      "P_at_L5_contactos_largo_alcance": {
+        "cuantico": 0.098,
+        "clasico": 0.1051,
+        "diferencia_cuantico_menos_clasico": -0.0071
+      },
+      "TM_score": {
+        "cuantico": 0.2289,
+        "clasico": 0.2225
+      },
+      "interpretacion_reportada_en_notebook": "Las diferencias observadas son pequeñas y no muestran una ventaja medible concluyente del circuito cuántico frente a una capa lineal equivalente."
+    },
+    "limitaciones_y_reproducibilidad": {
+      "resultados_dependen_de_las_ejecuciones_guardadas": true,
+      "no_implica_ventaja_cuantica_demostrada": true,
+      "comparacion_CASP_no_es_estrictamente_homogenea": "Los valores de referencia CASP utilizan MSA y corresponden a dominios de modelado libre; el experimento del TFM utiliza secuencia individual.",
+      "checkpoint_guardado_en_notebook": "checkpoint_best.pt",
+      "ruta_local_de_exportacion_PDB_en_notebook": "Ruta local de Windows; debe sustituirse por una ruta relativa o configurarse al reproducir el notebook."
+    }
+  },
+  "nota_metodologica": "Los resultados bajo ejecucion_anterior_no_final corresponden a 5000 proteínas y 100000 pares (20000 por bin), no a la configuración objetivo. No se han inferido ni inventado métricas para la corrida final ni las réplicas."
+}
