@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Si utilizas este trabajo, cítalo con estos datos."
+title: "Red neuronal cuántica híbrida para la predicción de estructura tridimensional de proteínas mediante embeddings de lenguaje proteico"
+type: software
+authors:
+  - family-names: "Roca Rodríguez"
+    given-names: "Marco Antonio"
+    affiliation: "Universidad Internacional de La Rioja (UNIR)"
+repository-code: "https://github.com/marrocrod/qnn-protein_structure-prediction"
+license: MIT
+date-released: "2026-11-03"
+keywords:
+  - quantum machine learning
+  - hybrid quantum-classical neural network
+  - MERA
+  - protein structure prediction
+  - contact prediction
+  - ESM-2
+  - CASP
+preferred-citation:
+  type: thesis
+  thesis-type: "Trabajo Fin de Máster"
+  title: "Red neuronal cuántica híbrida para la predicción de estructura tridimensional de proteínas mediante embeddings de lenguaje proteico"
+  authors:
+    - family-names: "Roca Rodríguez"
+      given-names: "Marco Antonio"
+  institution:
+    name: "Universidad Internacional de La Rioja (UNIR), Máster Universitario en Computación Cuántica"
+  year: 2026
+  url: "https://github.com/marrocrod/qnn-protein_structure-prediction"

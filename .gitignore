@@ -1,0 +1,23 @@
+# ── Data and model artefacts (large or regenerable) ──
+casp11/
+*.pt
+*.pth
+checkpoint_best.pt
+results/registro_ejecuciones.json
+results/pymol/pdb/
+notebook/pymol_export/
+
+# ── Python / Jupyter ──
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# ── OS / editors ──
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
