@@ -1,125 +1,329 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "proyecto": {
-    "titulo": "Red Neuronal Cuántica Híbrida para la Predicción de Estructura de Proteínas",
+    "titulo": "Red neuronal cuántica híbrida para la predicción de estructura tridimensional de proteínas mediante embeddings de lenguaje proteico",
     "autor": "Marco Antonio Roca Rodríguez",
+    "director": "Mariano Caruso",
     "tipo": "Trabajo Fin de Máster",
-    "tema": "Predicción de contactos y estructura tridimensional de proteínas mediante una red neuronal híbrida clásica-cuántica",
-    "dataset": "ProteinNet CASP11",
-    "semilla": 42,
-    "nota": "Resultados extraídos de las salidas guardadas en el notebook TFM_QNN.ipynb. Las métricas corresponden a las ejecuciones registradas en ese notebook."
+    "titulacion": "Máster Universitario en Computación Cuántica (UNIR)",
+    "anio": 2026,
+    "repositorio": "https://github.com/marrocrod/qnn-protein_structure-prediction"
   },
-  "estado": "plantilla_preparada; faltan los resultados medidos de la corrida final y de las dos replicas",
-  "corrida_final": {
-    "estado": "pendiente_de_ejecucion_o_de_importar_resultados",
-    "configuracion_objetivo": {
-      "dataset": "ProteinNet CASP11",
-      "training_set": "training_100",
-      "proteinas_entrenamiento": 15000,
-      "pares_por_bin": 40000,
-      "numero_bins": 5,
-      "pares_objetivo_total": 200000,
-      "evaluacion_contactos_proteinas": 224,
-      "evaluacion_estructura_3d_proteinas": 30
-    },
-    "semilla": "pendiente_de_confirmar",
-    "fecha_ejecucion": null,
-    "metricas_contactos": null,
-    "metricas_estructura_3d": null,
-    "artefactos": []
-  },
-  "replicas": [
-    {
-      "id": "replica_1",
-      "estado": "pendiente",
-      "semilla": null,
-      "configuracion": null,
-      "metricas_contactos": null,
-      "metricas_estructura_3d": null,
-      "artefactos": []
-    },
-    {
-      "id": "replica_2",
-      "estado": "pendiente",
-      "semilla": null,
-      "configuracion": null,
-      "metricas_contactos": null,
-      "metricas_estructura_3d": null,
-      "artefactos": []
-    }
-  ],
-  "ejecucion_anterior_no_final": {
-    "proyecto": {
-      "titulo": "Red Neuronal Cuántica Híbrida para la Predicción de Estructura de Proteínas",
-      "autor": "Marco Antonio Roca Rodríguez",
-      "tipo": "Trabajo Fin de Máster",
-      "tema": "Predicción de contactos y estructura tridimensional de proteínas mediante una red neuronal híbrida clásica-cuántica",
-      "dataset": "ProteinNet CASP11",
-      "semilla": 42,
-      "nota": "Resultados extraídos de las salidas guardadas en el notebook TFM_QNN.ipynb. Las métricas corresponden a las ejecuciones registradas en ese notebook."
-    },
-    "configuracion": {
-      "proteinas_entrenamiento": 5000,
-      "proteinas_disponibles_en_fichero_entrenamiento": 87573,
-      "pares_entrenamiento": 100000,
-      "pares_por_bin": 20000,
-      "epocas_maximas": 120,
-      "paciencia_early_stopping": 10,
-      "dropout": 0.5,
-      "weight_decay": 0.01,
-      "dispositivo": "CUDA",
-      "gpu": "NVIDIA GeForce RTX 5070 Ti",
-      "modelo_de_lenguaje": "ESM-2 t12 35M UR50D",
-      "atencion_por_par": true,
-      "mapa_de_contactos_ESM_como_caracteristica": false,
-      "evaluacion_contactos_proteinas": 224,
-      "evaluacion_estructura_3d_proteinas": 30
-    },
-    "arquitectura_cuantica": {
-      "ansatz": "MERA",
-      "qubits": 12,
-      "parametros_cuanticos": 312,
-      "dimensiones_salida_circuito": 27,
-      "parametros_totales_modelo_hibrido": 45103,
-      "descripcion_salida": "12 expectativas Z + 9 expectativas ZZ + 3 expectativas X + 3 expectativas Y"
-    },
-    "entrenamiento": {
-      "ejecucion_modelo_principal": {
-        "epoca_early_stopping": 13,
-        "mejor_epoca_segun_loss_validacion": 3,
-        "mejor_loss_validacion": 2.8171,
-        "accuracy_validacion_en_mejor_epoca": 0.3613,
-        "loss_entrenamiento_ultima_epoca_registrada": 2.7944,
-        "accuracy_entrenamiento_ultima_epoca_registrada": 0.3734
-      },
-      "ablacion_cuantica": {
-        "hibrido_cuantico": {
-          "epoca_early_stopping": 17,
-          "mejor_loss_validacion_registrada": 2.8178,
-          "mejor_accuracy_validacion_registrada": 0.3622
+  "como_leer": "Dos bloques de resultados con fuentes distintas. 'resultados_memoria' son las cifras publicadas en la memoria (ejecución principal y estudio de ablación). 'ejecucion_notebook' son las cifras que imprimió el notebook en su ejecución guardada, que es la réplica 2 de la ablación. Las métricas de contacto son fracciones (0-1); RMSD en Å; AUC-PR es el área bajo la curva precisión-recall.",
+  "resultados_memoria": {
+    "fuente": "docs/Memoria.pdf, capítulo 5 (Tablas 5.1-5.4)",
+    "contactos_tabla_5_1": {
+      "descripcion": "224 proteínas del conjunto de validación oficial de ProteinNet CASP11; rangos exclusivos; umbral 8 Å",
+      "sistema_propuesto": {
+        "corto_6_11": {
+          "P@L": 0.875,
+          "P@L/2": 0.885,
+          "P@L/5": 0.889,
+          "MCC": 0.101,
+          "Xd": 4.36
         },
-        "baseline_clasico_lineal": {
-          "epoca_early_stopping": 13,
-          "mejor_loss_validacion_registrada": 2.8168,
-          "mejor_accuracy_validacion_registrada": 0.3628
+        "medio_12_23": {
+          "P@L": 0.389,
+          "P@L/2": 0.398,
+          "P@L/5": 0.408,
+          "MCC": 0.071,
+          "Xd": 3.59
+        },
+        "largo_24": {
+          "P@L": 0.102,
+          "P@L/2": 0.107,
+          "P@L/5": 0.109,
+          "MCC": 0.018,
+          "Xd": 1.81
         }
+      },
+      "esm2_referencia": {
+        "corto_6_11": {
+          "P@L": 0.697,
+          "P@L/2": 0.7,
+          "P@L/5": 0.699,
+          "MCC": 0.018,
+          "Xd": 0.79
+        },
+        "medio_12_23": {
+          "P@L": 0.25,
+          "P@L/2": 0.25,
+          "P@L/5": 0.25,
+          "MCC": 0.009,
+          "Xd": 0.69
+        },
+        "largo_24": {
+          "P@L": 0.086,
+          "P@L/2": 0.087,
+          "P@L/5": 0.089,
+          "MCC": 0.007,
+          "Xd": 0.99
+        }
+      },
+      "densidad_contactos": {
+        "corto_6_11": 0.655,
+        "medio_12_23": 0.224,
+        "largo_24": 0.062
+      },
+      "mejora_sobre_esm2_puntos_P@L/5": {
+        "corto_6_11": 19.0,
+        "medio_12_23": 15.8,
+        "largo_24": 2.1
       }
     },
-    "metricas_contactos": {
-      "definiciones": {
-        "P@L": "Precisión entre los L contactos seleccionados con mayor puntuación",
-        "P@L/2": "Precisión entre los L/2 contactos seleccionados con mayor puntuación",
-        "P@L/5": "Precisión entre los L/5 contactos seleccionados con mayor puntuación",
-        "P@L/10": "Precisión entre los L/10 contactos seleccionados con mayor puntuación",
-        "R@L/5": "Recall entre los L/5 contactos seleccionados con mayor puntuación",
-        "F1@L/5": "F1 entre los L/5 contactos seleccionados con mayor puntuación",
-        "MCC": "Coeficiente de correlación de Matthews",
-        "Xd": "Factor de enriquecimiento reportado por el notebook",
-        "AUC": "Área bajo la curva ROC",
-        "densidad": "Densidad de contactos de referencia reportada por el notebook"
+    "estructura_3d_tabla_5_2": {
+      "descripcion": "30 proteínas del conjunto de validación oficial de ProteinNet CASP11",
+      "media": {
+        "RMSD_A": 14.24,
+        "GDT_TS": 0.114,
+        "GDT_HA": 0.028,
+        "TM_score": 0.222,
+        "lDDT": 0.363
       },
-      "evaluacion_modelo_hibrido_principal": {
-        "short_6_11": {
+      "desviacion": {
+        "GDT_TS": 0.111,
+        "TM_score": 0.094
+      },
+      "mejor_caso": {
+        "RMSD_A": 3.55,
+        "GDT_TS": 0.485,
+        "TM_score": 0.425,
+        "lDDT": 0.542
+      },
+      "peor_caso": {
+        "RMSD_A": 33.9,
+        "GDT_TS": 0.0,
+        "TM_score": 0.003,
+        "lDDT": 0.26
+      },
+      "notas": "Mejor caso: cadena de 50 residuos (2KJI). En 2 de 30 proteínas la reconstrucción es degenerada (GDT_TS 0, RMSD > 24 Å)."
+    },
+    "casp_tabla_5_3": {
+      "metrica": "P@L/5, contactos de largo alcance (>= 24)",
+      "CONSIP2_MetaPSICOV_CASP11": {
+        "P@L/5": 0.27,
+        "usa_MSA": true
+      },
+      "mejor_grupo_CASP10": {
+        "P@L/5": 0.2,
+        "usa_MSA": true,
+        "nota": "aproximado, sin covariación"
+      },
+      "este_trabajo": {
+        "P@L/5": 0.109,
+        "usa_MSA": false
+      },
+      "esm2_referencia": {
+        "P@L/5": 0.089,
+        "usa_MSA": false
+      },
+      "predictor_aleatorio": {
+        "P@L/5": 0.062
+      },
+      "nota": "CASP evalúa dominios de modelado libre; aquí se evalúan todas las proteínas. Comparación orientativa."
+    },
+    "ablacion_tabla_5_4": {
+      "metrica": "P@L/5 largo alcance (MERA / capa lineal) y TM-score (MERA / lineal)",
+      "replica_1_training_30": {
+        "MERA": 0.1047,
+        "lineal": 0.105,
+        "diferencia": -0.0003,
+        "TM_MERA": 0.227,
+        "TM_lineal": 0.232
+      },
+      "replica_2_training_100": {
+        "MERA": 0.098,
+        "lineal": 0.1051,
+        "diferencia": -0.0071,
+        "TM_MERA": 0.229,
+        "TM_lineal": 0.223
+      },
+      "parametros_ruta_intercambiable": {
+        "MERA": 312,
+        "lineal": 351
+      },
+      "parametros_totales": {
+        "MERA": 45103,
+        "lineal": 45142
+      },
+      "conclusion": "El circuito cuántico no proporciona ventaja medible sobre un componente clásico de capacidad equivalente."
+    },
+    "gradiente_cuantico": "La norma del gradiente de los parámetros cuánticos desciende de ~0,22 en las primeras épocas a ~0,015 en las últimas."
+  },
+  "ejecucion_notebook": {
+    "fuente": "salidas guardadas de notebook/TFM_QNN.ipynb (ejecución original)",
+    "corresponde_a": "réplica 2 del estudio de ablación de la memoria (training_100)",
+    "configuracion": {
+      "dataset": "ProteinNet CASP11",
+      "training_set": "training_100",
+      "proteinas_muestreadas": 5000,
+      "proteinas_disponibles_en_fichero": 87573,
+      "particion": "80 % entrenamiento / 20 % monitorización, por proteína completa",
+      "pares_por_intervalo_y_particion": 20000,
+      "pares_entrenamiento": 100000,
+      "pares_monitorizacion": 100000,
+      "dimension_entrada": 1201,
+      "batch": 64,
+      "epocas_maximas": 120,
+      "paciencia": 10,
+      "dropout": 0.5,
+      "weight_decay": 0.01,
+      "lr_clasico": 0.001,
+      "lr_cuantico": 0.02,
+      "warmup_cuantico_epocas": 3,
+      "semilla": 42,
+      "evaluacion_contactos_proteinas": 224,
+      "evaluacion_3d_proteinas": 30,
+      "modelo_lenguaje": "ESM-2 t12 35M UR50D (capa 6 + atención 12×20)",
+      "gpu": "NVIDIA GeForce RTX 5070 Ti"
+    },
+    "arquitectura": {
+      "parametros_totales": 45103,
+      "parametros_embudo_mlp": 38924,
+      "parametros_circuito": 312,
+      "circuito": {
+        "qubits": 12,
+        "niveles": 4,
+        "bloques": 27,
+        "parametros_por_bloque": 8,
+        "parametros_bloques": 216,
+        "parametros_recarga": 96,
+        "parametros_recarga_activos": 46,
+        "puertas_bloque": "U3 ⊗ U3 + RYY·RZZ",
+        "inicializacion": "U(-0.05, 0.05)",
+        "observables": "12 <Z> + 9 <ZZ> + 3 <X> + 3 <Y> = 27"
+      }
+    },
+    "entrenamiento": {
+      "historial": [
+        {
+          "epoca": 1,
+          "loss_train": 2.9134,
+          "acc_train": 0.3148,
+          "loss_val": 2.8312,
+          "acc_val": 0.3515,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.00667,
+          "norma_grad_cuantico": 0.216
+        },
+        {
+          "epoca": 2,
+          "loss_train": 2.8456,
+          "acc_train": 0.3479,
+          "loss_val": 2.8216,
+          "acc_val": 0.3599,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.0133,
+          "norma_grad_cuantico": 0.0556
+        },
+        {
+          "epoca": 3,
+          "loss_train": 2.8324,
+          "acc_train": 0.3549,
+          "loss_val": 2.8171,
+          "acc_val": 0.3613,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.02,
+          "norma_grad_cuantico": 0.0427
+        },
+        {
+          "epoca": 4,
+          "loss_train": 2.8256,
+          "acc_train": 0.3581,
+          "loss_val": 2.8195,
+          "acc_val": 0.362,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.02,
+          "norma_grad_cuantico": 0.0389
+        },
+        {
+          "epoca": 5,
+          "loss_train": 2.821,
+          "acc_train": 0.3601,
+          "loss_val": 2.8186,
+          "acc_val": 0.3616,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.02,
+          "norma_grad_cuantico": 0.0348
+        },
+        {
+          "epoca": 6,
+          "loss_train": 2.817,
+          "acc_train": 0.3611,
+          "loss_val": 2.8193,
+          "acc_val": 0.3612,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.02,
+          "norma_grad_cuantico": 0.0315
+        },
+        {
+          "epoca": 7,
+          "loss_train": 2.8141,
+          "acc_train": 0.3646,
+          "loss_val": 2.8215,
+          "acc_val": 0.3589,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.02,
+          "norma_grad_cuantico": 0.032
+        },
+        {
+          "epoca": 8,
+          "loss_train": 2.8101,
+          "acc_train": 0.3671,
+          "loss_val": 2.8192,
+          "acc_val": 0.3624,
+          "lr_clasico": 0.001,
+          "lr_cuantico": 0.02,
+          "norma_grad_cuantico": 0.0293
+        },
+        {
+          "epoca": 9,
+          "loss_train": 2.8072,
+          "acc_train": 0.3665,
+          "loss_val": 2.819,
+          "acc_val": 0.3617,
+          "lr_clasico": 0.0005,
+          "lr_cuantico": 0.01,
+          "norma_grad_cuantico": 0.0241
+        },
+        {
+          "epoca": 10,
+          "loss_train": 2.8,
+          "acc_train": 0.3708,
+          "loss_val": 2.8215,
+          "acc_val": 0.3611,
+          "lr_clasico": 0.0005,
+          "lr_cuantico": 0.01,
+          "norma_grad_cuantico": 0.0212
+        },
+        {
+          "epoca": 11,
+          "loss_train": 2.7965,
+          "acc_train": 0.3735,
+          "loss_val": 2.823,
+          "acc_val": 0.3603,
+          "lr_clasico": 0.0005,
+          "lr_cuantico": 0.01,
+          "norma_grad_cuantico": 0.0213
+        },
+        {
+          "epoca": 12,
+          "loss_train": 2.7944,
+          "acc_train": 0.3734,
+          "loss_val": 2.8238,
+          "acc_val": 0.3605,
+          "lr_clasico": 0.0005,
+          "lr_cuantico": 0.01,
+          "norma_grad_cuantico": 0.0214
+        }
+      ],
+      "mejor_epoca": 3,
+      "mejor_loss_val": 2.8171,
+      "parada_temprana_epoca": 13
+    },
+    "contactos": {
+      "Modelo híbrido": {
+        "corto_6_11": {
           "P@L": 0.8601,
           "P@L/2": 0.8712,
           "P@L/5": 0.8807,
@@ -128,10 +332,10 @@
           "F1@L/5": 0.0985,
           "MCC": 0.097,
           "Xd": 4.07,
-          "AUC": 0.805,
+          "AUC-PR": 0.805,
           "densidad": 0.6547
         },
-        "medium_12_23": {
+        "medio_12_23": {
           "P@L": 0.3875,
           "P@L/2": 0.3985,
           "P@L/5": 0.4068,
@@ -140,10 +344,10 @@
           "F1@L/5": 0.0763,
           "MCC": 0.069,
           "Xd": 3.65,
-          "AUC": 0.34,
+          "AUC-PR": 0.34,
           "densidad": 0.224
         },
-        "long_ge_24": {
+        "largo_24": {
           "P@L": 0.1027,
           "P@L/2": 0.1011,
           "P@L/5": 0.1018,
@@ -152,184 +356,1146 @@
           "F1@L/5": 0.0312,
           "MCC": 0.017,
           "Xd": 1.84,
-          "AUC": 0.096,
+          "AUC-PR": 0.096,
           "densidad": 0.0619
         }
       },
-      "comparativa_P_at_L5": {
-        "Hibrido cuantico MERA 12q": {
-          "short_6_11": 0.8807,
-          "medium_12_23": 0.4068,
-          "long_ge_24": 0.1018
+      "Baseline ESM-2": {
+        "corto_6_11": {
+          "P@L": 0.6968,
+          "P@L/2": 0.6995,
+          "P@L/5": 0.6985,
+          "P@L/10": 0.6917,
+          "R@L/5": 0.04,
+          "F1@L/5": 0.0753,
+          "MCC": 0.018,
+          "Xd": 0.79,
+          "AUC-PR": 0.683,
+          "densidad": 0.6547
         },
-        "Baseline ESM-2 sin entrenar": {
-          "short_6_11": 0.6985,
-          "medium_12_23": 0.2496,
-          "long_ge_24": 0.0887
+        "medio_12_23": {
+          "P@L": 0.2502,
+          "P@L/2": 0.2495,
+          "P@L/5": 0.2496,
+          "P@L/10": 0.2611,
+          "R@L/5": 0.0235,
+          "F1@L/5": 0.0462,
+          "MCC": 0.009,
+          "Xd": 0.69,
+          "AUC-PR": 0.248,
+          "densidad": 0.224
         },
-        "Hibrido cuantico MERA ablacion": {
-          "short_6_11": 0.8907,
-          "medium_12_23": 0.3816,
-          "long_ge_24": 0.098
-        },
-        "Baseline clasico Linear": {
-          "short_6_11": 0.8876,
-          "medium_12_23": 0.4083,
-          "long_ge_24": 0.1051
-        }
-      },
-      "comparativa_detallada_long_range_ge_24": {
-        "Hibrido cuantico principal": {
-          "P@L": 0.1027,
-          "P@L/2": 0.1011,
-          "P@L/5": 0.1018,
-          "P@L/10": 0.1025,
-          "R@L/5": 0.0203,
-          "MCC": 0.017,
-          "Xd": 1.84,
-          "AUC": 0.096
-        },
-        "Baseline ESM-2 sin entrenar": {
+        "largo_24": {
           "P@L": 0.0863,
           "P@L/2": 0.0867,
           "P@L/5": 0.0887,
           "P@L/10": 0.0875,
           "R@L/5": 0.0087,
+          "F1@L/5": 0.0229,
           "MCC": 0.007,
           "Xd": 0.99,
-          "AUC": 0.082
+          "AUC-PR": 0.082,
+          "densidad": 0.0619
+        }
+      },
+      "Híbrido cuántico (MERA)": {
+        "corto_6_11": {
+          "P@L": 0.8743,
+          "P@L/2": 0.8881,
+          "P@L/5": 0.8907,
+          "P@L/10": 0.8955,
+          "R@L/5": 0.0551,
+          "F1@L/5": 0.101,
+          "MCC": 0.102,
+          "Xd": 4.19,
+          "AUC-PR": 0.81,
+          "densidad": 0.6547
         },
-        "Hibrido cuantico MERA ablacion": {
+        "medio_12_23": {
+          "P@L": 0.374,
+          "P@L/2": 0.3831,
+          "P@L/5": 0.3816,
+          "P@L/10": 0.3721,
+          "R@L/5": 0.0454,
+          "F1@L/5": 0.0714,
+          "MCC": 0.061,
+          "Xd": 3.09,
+          "AUC-PR": 0.332,
+          "densidad": 0.224
+        },
+        "largo_24": {
           "P@L": 0.0971,
           "P@L/2": 0.0995,
           "P@L/5": 0.098,
           "P@L/10": 0.0945,
           "R@L/5": 0.0158,
+          "F1@L/5": 0.0283,
           "MCC": 0.015,
           "Xd": 1.44,
-          "AUC": 0.092
+          "AUC-PR": 0.092,
+          "densidad": 0.0619
+        }
+      },
+      "Baseline clásico (Linear)": {
+        "corto_6_11": {
+          "P@L": 0.8665,
+          "P@L/2": 0.8835,
+          "P@L/5": 0.8876,
+          "P@L/10": 0.896,
+          "R@L/5": 0.0546,
+          "F1@L/5": 0.1002,
+          "MCC": 0.1,
+          "Xd": 4.26,
+          "AUC-PR": 0.81,
+          "densidad": 0.6547
         },
-        "Baseline clasico Linear": {
+        "medio_12_23": {
+          "P@L": 0.3858,
+          "P@L/2": 0.3999,
+          "P@L/5": 0.4083,
+          "P@L/10": 0.4152,
+          "R@L/5": 0.0442,
+          "F1@L/5": 0.0752,
+          "MCC": 0.069,
+          "Xd": 3.55,
+          "AUC-PR": 0.338,
+          "densidad": 0.224
+        },
+        "largo_24": {
           "P@L": 0.1031,
           "P@L/2": 0.103,
           "P@L/5": 0.1051,
           "P@L/10": 0.1064,
           "R@L/5": 0.016,
+          "F1@L/5": 0.0299,
           "MCC": 0.016,
           "Xd": 1.79,
-          "AUC": 0.095
+          "AUC-PR": 0.095,
+          "densidad": 0.0619
         }
       }
     },
-    "metricas_estructura_3d": {
-      "unidad_rmsd": "angstrom",
-      "unidad_gdt_ts_gdt_ha_tm_score_lddt": "fraccion",
-      "evaluacion": "30 proteínas",
-      "Hibrido cuantico principal": {
-        "RMSD": 13.99,
-        "GDT_TS_media": 0.122,
-        "GDT_TS_desviacion": 0.119,
-        "GDT_HA": 0.031,
-        "TM_score_media": 0.23,
-        "TM_score_desviacion": 0.098,
-        "lDDT": 0.365,
-        "GDT_TS_por_umbral": {
-          "hasta_1_angstrom": 0.003,
-          "hasta_2_angstrom": 0.018,
-          "hasta_4_angstrom": 0.103,
-          "hasta_8_angstrom": 0.364
-        }
+    "estructura_3d": {
+      "Modelo híbrido": {
+        "agregado": {
+          "RMSD_A": 13.99,
+          "GDT_TS": 0.122,
+          "GDT_TS_desv": 0.119,
+          "GDT_HA": 0.031,
+          "TM_score": 0.23,
+          "TM_score_desv": 0.098,
+          "lDDT": 0.365,
+          "GDT_TS_por_umbral_A": {
+            "1.0": 0.003,
+            "2.0": 0.018,
+            "4.0": 0.103,
+            "8.0": 0.364
+          },
+          "n_proteinas": 30
+        },
+        "por_proteina": [
+          {
+            "id": "50#2KDD_1_A",
+            "L": 57,
+            "RMSD_A": 3.92,
+            "GDT_TS": 0.452,
+            "TM_score": 0.379,
+            "lDDT": 0.438
+          },
+          {
+            "id": "10#3MSW_1_A",
+            "L": 139,
+            "RMSD_A": 15.34,
+            "GDT_TS": 0.054,
+            "TM_score": 0.142,
+            "lDDT": 0.278
+          },
+          {
+            "id": "20#2GTA_1_A",
+            "L": 98,
+            "RMSD_A": 5.0,
+            "GDT_TS": 0.362,
+            "TM_score": 0.434,
+            "lDDT": 0.417
+          },
+          {
+            "id": "30#2XEM_1_A",
+            "L": 145,
+            "RMSD_A": 10.7,
+            "GDT_TS": 0.076,
+            "TM_score": 0.206,
+            "lDDT": 0.399
+          },
+          {
+            "id": "70#4FVS_1_A",
+            "L": 214,
+            "RMSD_A": 9.48,
+            "GDT_TS": 0.106,
+            "TM_score": 0.313,
+            "lDDT": 0.327
+          },
+          {
+            "id": "40#3PBT_1_A",
+            "L": 501,
+            "RMSD_A": 18.56,
+            "GDT_TS": 0.046,
+            "TM_score": 0.297,
+            "lDDT": 0.27
+          },
+          {
+            "id": "40#3H3M_1_A",
+            "L": 89,
+            "RMSD_A": 24.49,
+            "GDT_TS": 0.0,
+            "TM_score": 0.02,
+            "lDDT": 0.483
+          },
+          {
+            "id": "20#3D0F_1_A",
+            "L": 105,
+            "RMSD_A": 8.96,
+            "GDT_TS": 0.129,
+            "TM_score": 0.212,
+            "lDDT": 0.319
+          },
+          {
+            "id": "40#3J6B_23_W",
+            "L": 112,
+            "RMSD_A": 8.89,
+            "GDT_TS": 0.158,
+            "TM_score": 0.235,
+            "lDDT": 0.424
+          },
+          {
+            "id": "90#2EX5_3_A",
+            "L": 207,
+            "RMSD_A": 9.94,
+            "GDT_TS": 0.146,
+            "TM_score": 0.338,
+            "lDDT": 0.397
+          },
+          {
+            "id": "20#3PES_1_A",
+            "L": 83,
+            "RMSD_A": 14.22,
+            "GDT_TS": 0.066,
+            "TM_score": 0.116,
+            "lDDT": 0.335
+          },
+          {
+            "id": "70#1UP9_1_A",
+            "L": 107,
+            "RMSD_A": 7.62,
+            "GDT_TS": 0.208,
+            "TM_score": 0.279,
+            "lDDT": 0.403
+          },
+          {
+            "id": "10#1PP7_3_U",
+            "L": 114,
+            "RMSD_A": 10.68,
+            "GDT_TS": 0.094,
+            "TM_score": 0.185,
+            "lDDT": 0.377
+          },
+          {
+            "id": "20#2KJI_1_A",
+            "L": 50,
+            "RMSD_A": 3.66,
+            "GDT_TS": 0.48,
+            "TM_score": 0.381,
+            "lDDT": 0.516
+          },
+          {
+            "id": "90#4GHK_1_A",
+            "L": 404,
+            "RMSD_A": 18.37,
+            "GDT_TS": 0.022,
+            "TM_score": 0.208,
+            "lDDT": 0.307
+          },
+          {
+            "id": "70#3MDN_1_A",
+            "L": 218,
+            "RMSD_A": 17.27,
+            "GDT_TS": 0.072,
+            "TM_score": 0.205,
+            "lDDT": 0.329
+          },
+          {
+            "id": "30#2E6H_1_A",
+            "L": 236,
+            "RMSD_A": 28.87,
+            "GDT_TS": 0.075,
+            "TM_score": 0.228,
+            "lDDT": 0.338
+          },
+          {
+            "id": "70#3KHK_1_A",
+            "L": 488,
+            "RMSD_A": 17.86,
+            "GDT_TS": 0.033,
+            "TM_score": 0.235,
+            "lDDT": 0.288
+          },
+          {
+            "id": "40#3LX3_1_A",
+            "L": 163,
+            "RMSD_A": 18.28,
+            "GDT_TS": 0.009,
+            "TM_score": 0.094,
+            "lDDT": 0.338
+          },
+          {
+            "id": "50#4JHY_1_A",
+            "L": 156,
+            "RMSD_A": 9.87,
+            "GDT_TS": 0.109,
+            "TM_score": 0.256,
+            "lDDT": 0.333
+          },
+          {
+            "id": "20#1S21_1_A",
+            "L": 165,
+            "RMSD_A": 10.95,
+            "GDT_TS": 0.094,
+            "TM_score": 0.24,
+            "lDDT": 0.281
+          },
+          {
+            "id": "40#3B1S_2_B",
+            "L": 85,
+            "RMSD_A": 7.85,
+            "GDT_TS": 0.215,
+            "TM_score": 0.255,
+            "lDDT": 0.364
+          },
+          {
+            "id": "30#2M4M_1_A",
+            "L": 124,
+            "RMSD_A": 8.5,
+            "GDT_TS": 0.171,
+            "TM_score": 0.282,
+            "lDDT": 0.422
+          },
+          {
+            "id": "50#3GRU_1_A",
+            "L": 263,
+            "RMSD_A": 13.85,
+            "GDT_TS": 0.077,
+            "TM_score": 0.266,
+            "lDDT": 0.333
+          },
+          {
+            "id": "10#4JX2_1_A",
+            "L": 402,
+            "RMSD_A": 32.99,
+            "GDT_TS": 0.04,
+            "TM_score": 0.214,
+            "lDDT": 0.306
+          },
+          {
+            "id": "20#4NYQ_1_A",
+            "L": 153,
+            "RMSD_A": 10.19,
+            "GDT_TS": 0.078,
+            "TM_score": 0.219,
+            "lDDT": 0.299
+          },
+          {
+            "id": "40#1Z8U_1_A",
+            "L": 90,
+            "RMSD_A": 14.66,
+            "GDT_TS": 0.058,
+            "TM_score": 0.108,
+            "lDDT": 0.393
+          },
+          {
+            "id": "30#1AMX_1_A",
+            "L": 150,
+            "RMSD_A": 7.62,
+            "GDT_TS": 0.203,
+            "TM_score": 0.349,
+            "lDDT": 0.341
+          },
+          {
+            "id": "10#2QTV_3_D",
+            "L": 36,
+            "RMSD_A": 33.81,
+            "GDT_TS": 0.0,
+            "TM_score": 0.003,
+            "lDDT": 0.583
+          },
+          {
+            "id": "20#1R4X_1_A",
+            "L": 274,
+            "RMSD_A": 17.2,
+            "GDT_TS": 0.025,
+            "TM_score": 0.185,
+            "lDDT": 0.315
+          }
+        ]
       },
-      "Hibrido cuantico MERA ablacion": {
-        "RMSD": 14.06,
-        "GDT_TS_media": 0.12,
-        "GDT_TS_desviacion": 0.116,
-        "GDT_HA": 0.031,
-        "TM_score_media": 0.229,
-        "TM_score_desviacion": 0.096,
-        "lDDT": 0.363,
-        "GDT_TS_por_umbral": {
-          "hasta_1_angstrom": 0.004,
-          "hasta_2_angstrom": 0.022,
-          "hasta_4_angstrom": 0.098,
-          "hasta_8_angstrom": 0.357
-        }
+      "Híbrido cuántico (MERA)": {
+        "agregado": {
+          "RMSD_A": 14.06,
+          "GDT_TS": 0.12,
+          "GDT_TS_desv": 0.116,
+          "GDT_HA": 0.031,
+          "TM_score": 0.229,
+          "TM_score_desv": 0.096,
+          "lDDT": 0.363,
+          "GDT_TS_por_umbral_A": {
+            "1.0": 0.004,
+            "2.0": 0.022,
+            "4.0": 0.098,
+            "8.0": 0.357
+          },
+          "n_proteinas": 30
+        },
+        "por_proteina": [
+          {
+            "id": "50#2KDD_1_A",
+            "L": 57,
+            "RMSD_A": 4.65,
+            "GDT_TS": 0.404,
+            "TM_score": 0.357,
+            "lDDT": 0.426
+          },
+          {
+            "id": "10#3MSW_1_A",
+            "L": 139,
+            "RMSD_A": 14.34,
+            "GDT_TS": 0.043,
+            "TM_score": 0.144,
+            "lDDT": 0.284
+          },
+          {
+            "id": "20#2GTA_1_A",
+            "L": 98,
+            "RMSD_A": 5.07,
+            "GDT_TS": 0.352,
+            "TM_score": 0.419,
+            "lDDT": 0.419
+          },
+          {
+            "id": "30#2XEM_1_A",
+            "L": 145,
+            "RMSD_A": 10.7,
+            "GDT_TS": 0.079,
+            "TM_score": 0.205,
+            "lDDT": 0.384
+          },
+          {
+            "id": "70#4FVS_1_A",
+            "L": 214,
+            "RMSD_A": 9.43,
+            "GDT_TS": 0.129,
+            "TM_score": 0.332,
+            "lDDT": 0.321
+          },
+          {
+            "id": "40#3PBT_1_A",
+            "L": 501,
+            "RMSD_A": 18.71,
+            "GDT_TS": 0.067,
+            "TM_score": 0.314,
+            "lDDT": 0.273
+          },
+          {
+            "id": "40#3H3M_1_A",
+            "L": 89,
+            "RMSD_A": 24.26,
+            "GDT_TS": 0.0,
+            "TM_score": 0.02,
+            "lDDT": 0.489
+          },
+          {
+            "id": "20#3D0F_1_A",
+            "L": 105,
+            "RMSD_A": 9.11,
+            "GDT_TS": 0.148,
+            "TM_score": 0.231,
+            "lDDT": 0.318
+          },
+          {
+            "id": "40#3J6B_23_W",
+            "L": 112,
+            "RMSD_A": 8.81,
+            "GDT_TS": 0.152,
+            "TM_score": 0.242,
+            "lDDT": 0.425
+          },
+          {
+            "id": "90#2EX5_3_A",
+            "L": 207,
+            "RMSD_A": 10.22,
+            "GDT_TS": 0.146,
+            "TM_score": 0.332,
+            "lDDT": 0.388
+          },
+          {
+            "id": "20#3PES_1_A",
+            "L": 83,
+            "RMSD_A": 13.69,
+            "GDT_TS": 0.063,
+            "TM_score": 0.12,
+            "lDDT": 0.337
+          },
+          {
+            "id": "70#1UP9_1_A",
+            "L": 107,
+            "RMSD_A": 7.77,
+            "GDT_TS": 0.196,
+            "TM_score": 0.281,
+            "lDDT": 0.392
+          },
+          {
+            "id": "10#1PP7_3_U",
+            "L": 114,
+            "RMSD_A": 10.54,
+            "GDT_TS": 0.103,
+            "TM_score": 0.187,
+            "lDDT": 0.378
+          },
+          {
+            "id": "20#2KJI_1_A",
+            "L": 50,
+            "RMSD_A": 3.54,
+            "GDT_TS": 0.49,
+            "TM_score": 0.399,
+            "lDDT": 0.512
+          },
+          {
+            "id": "90#4GHK_1_A",
+            "L": 404,
+            "RMSD_A": 18.22,
+            "GDT_TS": 0.025,
+            "TM_score": 0.215,
+            "lDDT": 0.326
+          },
+          {
+            "id": "70#3MDN_1_A",
+            "L": 218,
+            "RMSD_A": 17.32,
+            "GDT_TS": 0.078,
+            "TM_score": 0.206,
+            "lDDT": 0.334
+          },
+          {
+            "id": "30#2E6H_1_A",
+            "L": 236,
+            "RMSD_A": 28.89,
+            "GDT_TS": 0.077,
+            "TM_score": 0.232,
+            "lDDT": 0.338
+          },
+          {
+            "id": "70#3KHK_1_A",
+            "L": 488,
+            "RMSD_A": 17.64,
+            "GDT_TS": 0.016,
+            "TM_score": 0.241,
+            "lDDT": 0.294
+          },
+          {
+            "id": "40#3LX3_1_A",
+            "L": 163,
+            "RMSD_A": 18.26,
+            "GDT_TS": 0.012,
+            "TM_score": 0.098,
+            "lDDT": 0.34
+          },
+          {
+            "id": "50#4JHY_1_A",
+            "L": 156,
+            "RMSD_A": 10.05,
+            "GDT_TS": 0.099,
+            "TM_score": 0.25,
+            "lDDT": 0.308
+          },
+          {
+            "id": "20#1S21_1_A",
+            "L": 165,
+            "RMSD_A": 10.93,
+            "GDT_TS": 0.089,
+            "TM_score": 0.236,
+            "lDDT": 0.289
+          },
+          {
+            "id": "40#3B1S_2_B",
+            "L": 85,
+            "RMSD_A": 7.72,
+            "GDT_TS": 0.247,
+            "TM_score": 0.272,
+            "lDDT": 0.372
+          },
+          {
+            "id": "30#2M4M_1_A",
+            "L": 124,
+            "RMSD_A": 10.58,
+            "GDT_TS": 0.111,
+            "TM_score": 0.207,
+            "lDDT": 0.431
+          },
+          {
+            "id": "50#3GRU_1_A",
+            "L": 263,
+            "RMSD_A": 14.15,
+            "GDT_TS": 0.079,
+            "TM_score": 0.268,
+            "lDDT": 0.326
+          },
+          {
+            "id": "10#4JX2_1_A",
+            "L": 402,
+            "RMSD_A": 33.29,
+            "GDT_TS": 0.017,
+            "TM_score": 0.187,
+            "lDDT": 0.301
+          },
+          {
+            "id": "20#4NYQ_1_A",
+            "L": 153,
+            "RMSD_A": 10.04,
+            "GDT_TS": 0.098,
+            "TM_score": 0.23,
+            "lDDT": 0.304
+          },
+          {
+            "id": "40#1Z8U_1_A",
+            "L": 90,
+            "RMSD_A": 14.58,
+            "GDT_TS": 0.078,
+            "TM_score": 0.12,
+            "lDDT": 0.378
+          },
+          {
+            "id": "30#1AMX_1_A",
+            "L": 150,
+            "RMSD_A": 8.02,
+            "GDT_TS": 0.185,
+            "TM_score": 0.338,
+            "lDDT": 0.324
+          },
+          {
+            "id": "10#2QTV_3_D",
+            "L": 36,
+            "RMSD_A": 33.84,
+            "GDT_TS": 0.0,
+            "TM_score": 0.003,
+            "lDDT": 0.564
+          },
+          {
+            "id": "20#1R4X_1_A",
+            "L": 274,
+            "RMSD_A": 17.29,
+            "GDT_TS": 0.029,
+            "TM_score": 0.182,
+            "lDDT": 0.312
+          }
+        ]
       },
-      "Baseline clasico Linear": {
-        "RMSD": 14.13,
-        "GDT_TS_media": 0.114,
-        "GDT_TS_desviacion": 0.112,
-        "GDT_HA": 0.027,
-        "TM_score_media": 0.223,
-        "TM_score_desviacion": 0.094,
-        "lDDT": 0.365,
-        "GDT_TS_por_umbral": {
-          "hasta_1_angstrom": 0.003,
-          "hasta_2_angstrom": 0.019,
-          "hasta_4_angstrom": 0.086,
-          "hasta_8_angstrom": 0.349
-        }
+      "Baseline clásico (Linear)": {
+        "agregado": {
+          "RMSD_A": 14.13,
+          "GDT_TS": 0.114,
+          "GDT_TS_desv": 0.112,
+          "GDT_HA": 0.027,
+          "TM_score": 0.223,
+          "TM_score_desv": 0.094,
+          "lDDT": 0.365,
+          "GDT_TS_por_umbral_A": {
+            "1.0": 0.003,
+            "2.0": 0.019,
+            "4.0": 0.086,
+            "8.0": 0.349
+          },
+          "n_proteinas": 30
+        },
+        "por_proteina": [
+          {
+            "id": "50#2KDD_1_A",
+            "L": 57,
+            "RMSD_A": 4.79,
+            "GDT_TS": 0.386,
+            "TM_score": 0.33,
+            "lDDT": 0.435
+          },
+          {
+            "id": "10#3MSW_1_A",
+            "L": 139,
+            "RMSD_A": 15.39,
+            "GDT_TS": 0.034,
+            "TM_score": 0.128,
+            "lDDT": 0.263
+          },
+          {
+            "id": "20#2GTA_1_A",
+            "L": 98,
+            "RMSD_A": 5.02,
+            "GDT_TS": 0.352,
+            "TM_score": 0.43,
+            "lDDT": 0.412
+          },
+          {
+            "id": "30#2XEM_1_A",
+            "L": 145,
+            "RMSD_A": 10.62,
+            "GDT_TS": 0.076,
+            "TM_score": 0.2,
+            "lDDT": 0.397
+          },
+          {
+            "id": "70#4FVS_1_A",
+            "L": 214,
+            "RMSD_A": 9.75,
+            "GDT_TS": 0.12,
+            "TM_score": 0.317,
+            "lDDT": 0.339
+          },
+          {
+            "id": "40#3PBT_1_A",
+            "L": 501,
+            "RMSD_A": 18.46,
+            "GDT_TS": 0.049,
+            "TM_score": 0.294,
+            "lDDT": 0.27
+          },
+          {
+            "id": "40#3H3M_1_A",
+            "L": 89,
+            "RMSD_A": 24.4,
+            "GDT_TS": 0.0,
+            "TM_score": 0.02,
+            "lDDT": 0.477
+          },
+          {
+            "id": "20#3D0F_1_A",
+            "L": 105,
+            "RMSD_A": 8.92,
+            "GDT_TS": 0.124,
+            "TM_score": 0.213,
+            "lDDT": 0.318
+          },
+          {
+            "id": "40#3J6B_23_W",
+            "L": 112,
+            "RMSD_A": 8.88,
+            "GDT_TS": 0.165,
+            "TM_score": 0.242,
+            "lDDT": 0.427
+          },
+          {
+            "id": "90#2EX5_3_A",
+            "L": 207,
+            "RMSD_A": 10.02,
+            "GDT_TS": 0.15,
+            "TM_score": 0.335,
+            "lDDT": 0.389
+          },
+          {
+            "id": "20#3PES_1_A",
+            "L": 83,
+            "RMSD_A": 13.82,
+            "GDT_TS": 0.066,
+            "TM_score": 0.12,
+            "lDDT": 0.331
+          },
+          {
+            "id": "70#1UP9_1_A",
+            "L": 107,
+            "RMSD_A": 7.76,
+            "GDT_TS": 0.192,
+            "TM_score": 0.278,
+            "lDDT": 0.404
+          },
+          {
+            "id": "10#1PP7_3_U",
+            "L": 114,
+            "RMSD_A": 10.28,
+            "GDT_TS": 0.116,
+            "TM_score": 0.202,
+            "lDDT": 0.37
+          },
+          {
+            "id": "20#2KJI_1_A",
+            "L": 50,
+            "RMSD_A": 3.72,
+            "GDT_TS": 0.485,
+            "TM_score": 0.393,
+            "lDDT": 0.511
+          },
+          {
+            "id": "90#4GHK_1_A",
+            "L": 404,
+            "RMSD_A": 18.09,
+            "GDT_TS": 0.024,
+            "TM_score": 0.221,
+            "lDDT": 0.31
+          },
+          {
+            "id": "70#3MDN_1_A",
+            "L": 218,
+            "RMSD_A": 17.42,
+            "GDT_TS": 0.069,
+            "TM_score": 0.204,
+            "lDDT": 0.332
+          },
+          {
+            "id": "30#2E6H_1_A",
+            "L": 236,
+            "RMSD_A": 28.92,
+            "GDT_TS": 0.074,
+            "TM_score": 0.229,
+            "lDDT": 0.333
+          },
+          {
+            "id": "70#3KHK_1_A",
+            "L": 488,
+            "RMSD_A": 17.61,
+            "GDT_TS": 0.016,
+            "TM_score": 0.216,
+            "lDDT": 0.295
+          },
+          {
+            "id": "40#3LX3_1_A",
+            "L": 163,
+            "RMSD_A": 18.32,
+            "GDT_TS": 0.014,
+            "TM_score": 0.097,
+            "lDDT": 0.341
+          },
+          {
+            "id": "50#4JHY_1_A",
+            "L": 156,
+            "RMSD_A": 9.96,
+            "GDT_TS": 0.103,
+            "TM_score": 0.251,
+            "lDDT": 0.322
+          },
+          {
+            "id": "20#1S21_1_A",
+            "L": 165,
+            "RMSD_A": 10.95,
+            "GDT_TS": 0.098,
+            "TM_score": 0.237,
+            "lDDT": 0.284
+          },
+          {
+            "id": "40#3B1S_2_B",
+            "L": 85,
+            "RMSD_A": 8.68,
+            "GDT_TS": 0.171,
+            "TM_score": 0.217,
+            "lDDT": 0.362
+          },
+          {
+            "id": "30#2M4M_1_A",
+            "L": 124,
+            "RMSD_A": 10.6,
+            "GDT_TS": 0.107,
+            "TM_score": 0.206,
+            "lDDT": 0.427
+          },
+          {
+            "id": "50#3GRU_1_A",
+            "L": 263,
+            "RMSD_A": 14.09,
+            "GDT_TS": 0.072,
+            "TM_score": 0.262,
+            "lDDT": 0.338
+          },
+          {
+            "id": "10#4JX2_1_A",
+            "L": 402,
+            "RMSD_A": 33.25,
+            "GDT_TS": 0.024,
+            "TM_score": 0.195,
+            "lDDT": 0.305
+          },
+          {
+            "id": "20#4NYQ_1_A",
+            "L": 153,
+            "RMSD_A": 10.25,
+            "GDT_TS": 0.077,
+            "TM_score": 0.222,
+            "lDDT": 0.309
+          },
+          {
+            "id": "40#1Z8U_1_A",
+            "L": 90,
+            "RMSD_A": 14.71,
+            "GDT_TS": 0.078,
+            "TM_score": 0.117,
+            "lDDT": 0.38
+          },
+          {
+            "id": "30#1AMX_1_A",
+            "L": 150,
+            "RMSD_A": 7.98,
+            "GDT_TS": 0.16,
+            "TM_score": 0.318,
+            "lDDT": 0.346
+          },
+          {
+            "id": "10#2QTV_3_D",
+            "L": 36,
+            "RMSD_A": 34.02,
+            "GDT_TS": 0.0,
+            "TM_score": 0.003,
+            "lDDT": 0.592
+          },
+          {
+            "id": "20#1R4X_1_A",
+            "L": 274,
+            "RMSD_A": 17.14,
+            "GDT_TS": 0.026,
+            "TM_score": 0.18,
+            "lDDT": 0.324
+          }
+        ]
       }
     },
-    "comparacion_CASP": {
-      "metrica": "P@L/5 en contactos de largo alcance (separación >=24)",
-      "nota": "Las cifras CASP del notebook corresponden a dominios de modelado libre y métodos que emplean alineamientos múltiples de secuencias (MSA); este trabajo opera con secuencia individual en inferencia.",
-      "referencias_reportadas": {
-        "CASP11_CONSIP2_mejor_grupo": {
-          "P@L/5": 0.27,
-          "usa_MSA": true
-        },
-        "CASP12_mejor_grupo": {
-          "P@L/5": 0.47,
-          "usa_MSA": true
-        },
-        "CASP13_mejor_grupo": {
-          "P@L/5": 0.7,
-          "usa_MSA": true
-        },
-        "CASP14_mejor_grupo": {
-          "P@L/5": 0.82,
-          "usa_MSA": true
-        }
+    "ablacion": {
+      "Híbrido cuántico (MERA)": {
+        "parametros_totales": 45103,
+        "parametros_ruta_intercambiable": 312,
+        "epocas": [
+          {
+            "epoca": 1,
+            "loss_train": 2.9045,
+            "acc_train": 0.3204,
+            "loss_val": 2.8275,
+            "acc_val": 0.3563
+          },
+          {
+            "epoca": 2,
+            "loss_train": 2.8402,
+            "acc_train": 0.3497,
+            "loss_val": 2.8217,
+            "acc_val": 0.3623
+          },
+          {
+            "epoca": 3,
+            "loss_train": 2.8303,
+            "acc_train": 0.3586,
+            "loss_val": 2.8197,
+            "acc_val": 0.3579
+          },
+          {
+            "epoca": 4,
+            "loss_train": 2.8247,
+            "acc_train": 0.36,
+            "loss_val": 2.8181,
+            "acc_val": 0.362
+          },
+          {
+            "epoca": 5,
+            "loss_train": 2.8193,
+            "acc_train": 0.3628,
+            "loss_val": 2.8189,
+            "acc_val": 0.362
+          },
+          {
+            "epoca": 6,
+            "loss_train": 2.8136,
+            "acc_train": 0.3654,
+            "loss_val": 2.8195,
+            "acc_val": 0.3612
+          },
+          {
+            "epoca": 7,
+            "loss_train": 2.8111,
+            "acc_train": 0.3665,
+            "loss_val": 2.8178,
+            "acc_val": 0.3622
+          },
+          {
+            "epoca": 8,
+            "loss_train": 2.8086,
+            "acc_train": 0.3679,
+            "loss_val": 2.8184,
+            "acc_val": 0.3616
+          },
+          {
+            "epoca": 9,
+            "loss_train": 2.8044,
+            "acc_train": 0.3702,
+            "loss_val": 2.8202,
+            "acc_val": 0.3585
+          },
+          {
+            "epoca": 10,
+            "loss_train": 2.801,
+            "acc_train": 0.3703,
+            "loss_val": 2.8213,
+            "acc_val": 0.3612
+          },
+          {
+            "epoca": 11,
+            "loss_train": 2.7993,
+            "acc_train": 0.3731,
+            "loss_val": 2.8193,
+            "acc_val": 0.3619
+          },
+          {
+            "epoca": 12,
+            "loss_train": 2.7978,
+            "acc_train": 0.3749,
+            "loss_val": 2.8233,
+            "acc_val": 0.3603
+          },
+          {
+            "epoca": 13,
+            "loss_train": 2.7944,
+            "acc_train": 0.3769,
+            "loss_val": 2.8218,
+            "acc_val": 0.3598
+          },
+          {
+            "epoca": 14,
+            "loss_train": 2.7878,
+            "acc_train": 0.3764,
+            "loss_val": 2.8243,
+            "acc_val": 0.3597
+          },
+          {
+            "epoca": 15,
+            "loss_train": 2.7851,
+            "acc_train": 0.379,
+            "loss_val": 2.8244,
+            "acc_val": 0.3589
+          },
+          {
+            "epoca": 16,
+            "loss_train": 2.7817,
+            "acc_train": 0.381,
+            "loss_val": 2.8278,
+            "acc_val": 0.3573
+          },
+          {
+            "epoca": 17,
+            "loss_train": 2.7791,
+            "acc_train": 0.3841,
+            "loss_val": 2.8282,
+            "acc_val": 0.359
+          }
+        ],
+        "parada_temprana_epoca": 17
       },
-      "modelos_del_trabajo": {
-        "Baseline clasico Linear": {
-          "P@L/5": 0.1051,
-          "usa_MSA": false
-        },
-        "Hibrido cuantico MERA 12q": {
-          "P@L/5": 0.1018,
-          "usa_MSA": false
-        },
-        "Hibrido cuantico MERA ablacion": {
-          "P@L/5": 0.098,
-          "usa_MSA": false
-        },
-        "Baseline ESM-2 sin entrenar": {
-          "P@L/5": 0.0887,
-          "usa_MSA": false
-        }
+      "Baseline clásico (Linear)": {
+        "parametros_totales": 45142,
+        "parametros_ruta_intercambiable": 351,
+        "epocas": [
+          {
+            "epoca": 1,
+            "loss_train": 2.8862,
+            "acc_train": 0.331,
+            "loss_val": 2.8218,
+            "acc_val": 0.3577
+          },
+          {
+            "epoca": 2,
+            "loss_train": 2.8356,
+            "acc_train": 0.3522,
+            "loss_val": 2.8202,
+            "acc_val": 0.3602
+          },
+          {
+            "epoca": 3,
+            "loss_train": 2.8262,
+            "acc_train": 0.3576,
+            "loss_val": 2.8168,
+            "acc_val": 0.3628
+          },
+          {
+            "epoca": 4,
+            "loss_train": 2.8211,
+            "acc_train": 0.3589,
+            "loss_val": 2.8171,
+            "acc_val": 0.3619
+          },
+          {
+            "epoca": 5,
+            "loss_train": 2.8147,
+            "acc_train": 0.3606,
+            "loss_val": 2.8169,
+            "acc_val": 0.3624
+          },
+          {
+            "epoca": 6,
+            "loss_train": 2.8104,
+            "acc_train": 0.3645,
+            "loss_val": 2.818,
+            "acc_val": 0.3618
+          },
+          {
+            "epoca": 7,
+            "loss_train": 2.8075,
+            "acc_train": 0.3654,
+            "loss_val": 2.8192,
+            "acc_val": 0.3603
+          },
+          {
+            "epoca": 8,
+            "loss_train": 2.8036,
+            "acc_train": 0.3691,
+            "loss_val": 2.8182,
+            "acc_val": 0.3608
+          },
+          {
+            "epoca": 9,
+            "loss_train": 2.8001,
+            "acc_train": 0.3712,
+            "loss_val": 2.823,
+            "acc_val": 0.3594
+          },
+          {
+            "epoca": 10,
+            "loss_train": 2.7932,
+            "acc_train": 0.3761,
+            "loss_val": 2.8216,
+            "acc_val": 0.3596
+          },
+          {
+            "epoca": 11,
+            "loss_train": 2.7887,
+            "acc_train": 0.3755,
+            "loss_val": 2.8243,
+            "acc_val": 0.3581
+          },
+          {
+            "epoca": 12,
+            "loss_train": 2.7868,
+            "acc_train": 0.38,
+            "loss_val": 2.8258,
+            "acc_val": 0.3562
+          },
+          {
+            "epoca": 13,
+            "loss_train": 2.7847,
+            "acc_train": 0.3802,
+            "loss_val": 2.8254,
+            "acc_val": 0.3572
+          }
+        ],
+        "parada_temprana_epoca": 13
+      },
+      "resumen": {
+        "P@L/5_largo_MERA": 0.098,
+        "P@L/5_largo_lineal": 0.1051,
+        "diferencia": -0.0071,
+        "TM_MERA": 0.2289,
+        "TM_lineal": 0.2225
       }
-    },
-    "conclusion_ablacion": {
-      "P_at_L5_contactos_largo_alcance": {
-        "cuantico": 0.098,
-        "clasico": 0.1051,
-        "diferencia_cuantico_menos_clasico": -0.0071
-      },
-      "TM_score": {
-        "cuantico": 0.2289,
-        "clasico": 0.2225
-      },
-      "interpretacion_reportada_en_notebook": "Las diferencias observadas son pequeñas y no muestran una ventaja medible concluyente del circuito cuántico frente a una capa lineal equivalente."
-    },
-    "limitaciones_y_reproducibilidad": {
-      "resultados_dependen_de_las_ejecuciones_guardadas": true,
-      "no_implica_ventaja_cuantica_demostrada": true,
-      "comparacion_CASP_no_es_estrictamente_homogenea": "Los valores de referencia CASP utilizan MSA y corresponden a dominios de modelado libre; el experimento del TFM utiliza secuencia individual.",
-      "checkpoint_guardado_en_notebook": "checkpoint_best.pt",
-      "ruta_local_de_exportacion_PDB_en_notebook": "Ruta local de Windows; debe sustituirse por una ruta relativa o configurarse al reproducir el notebook."
     }
   },
-  "nota_metodologica": "Los resultados bajo ejecucion_anterior_no_final corresponden a 5000 proteínas y 100000 pares (20000 por bin), no a la configuración objetivo. No se han inferido ni inventado métricas para la corrida final ni las réplicas."
+  "referencias_casp_notebook": {
+    "metrica": "P@L/5 largo alcance del mejor grupo, con MSA",
+    "CASP11_CONSIP2": 0.27,
+    "CASP12": 0.47,
+    "CASP13": 0.7,
+    "CASP14": 0.82
+  }
 }

@@ -1,0 +1,19 @@
+fuente,modelo,rango,P@L,P@L/2,P@L/5,P@L/10,R@L/5,F1@L/5,MCC,Xd,AUC-PR,densidad
+notebook (réplica 2),Modelo híbrido,corto_6_11,0.8601,0.8712,0.8807,0.8807,0.0535,0.0985,0.097,4.07,0.805,0.6547
+notebook (réplica 2),Modelo híbrido,medio_12_23,0.3875,0.3985,0.4068,0.4069,0.0434,0.0763,0.069,3.65,0.34,0.224
+notebook (réplica 2),Modelo híbrido,largo_24,0.1027,0.1011,0.1018,0.1025,0.0203,0.0312,0.017,1.84,0.096,0.0619
+notebook (réplica 2),Baseline ESM-2,corto_6_11,0.6968,0.6995,0.6985,0.6917,0.04,0.0753,0.018,0.79,0.683,0.6547
+notebook (réplica 2),Baseline ESM-2,medio_12_23,0.2502,0.2495,0.2496,0.2611,0.0235,0.0462,0.009,0.69,0.248,0.224
+notebook (réplica 2),Baseline ESM-2,largo_24,0.0863,0.0867,0.0887,0.0875,0.0087,0.0229,0.007,0.99,0.082,0.0619
+notebook (réplica 2),Híbrido cuántico (MERA),corto_6_11,0.8743,0.8881,0.8907,0.8955,0.0551,0.101,0.102,4.19,0.81,0.6547
+notebook (réplica 2),Híbrido cuántico (MERA),medio_12_23,0.374,0.3831,0.3816,0.3721,0.0454,0.0714,0.061,3.09,0.332,0.224
+notebook (réplica 2),Híbrido cuántico (MERA),largo_24,0.0971,0.0995,0.098,0.0945,0.0158,0.0283,0.015,1.44,0.092,0.0619
+notebook (réplica 2),Baseline clásico (Linear),corto_6_11,0.8665,0.8835,0.8876,0.896,0.0546,0.1002,0.1,4.26,0.81,0.6547
+notebook (réplica 2),Baseline clásico (Linear),medio_12_23,0.3858,0.3999,0.4083,0.4152,0.0442,0.0752,0.069,3.55,0.338,0.224
+notebook (réplica 2),Baseline clásico (Linear),largo_24,0.1031,0.103,0.1051,0.1064,0.016,0.0299,0.016,1.79,0.095,0.0619
+memoria (Tabla 5.1),Sistema propuesto,corto_6_11,0.875,0.885,0.889,,,,0.101,4.36,,0.655
+memoria (Tabla 5.1),Sistema propuesto,medio_12_23,0.389,0.398,0.408,,,,0.071,3.59,,0.224
+memoria (Tabla 5.1),Sistema propuesto,largo_24,0.102,0.107,0.109,,,,0.018,1.81,,0.062
+memoria (Tabla 5.1),ESM-2 (referencia),corto_6_11,0.697,0.7,0.699,,,,0.018,0.79,,0.655
+memoria (Tabla 5.1),ESM-2 (referencia),medio_12_23,0.25,0.25,0.25,,,,0.009,0.69,,0.224
+memoria (Tabla 5.1),ESM-2 (referencia),largo_24,0.086,0.087,0.089,,,,0.007,0.99,,0.062

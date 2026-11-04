@@ -1,0 +1,91 @@
+modelo,id,L,RMSD_A,GDT_TS,TM_score,lDDT
+Modelo híbrido,50#2KDD_1_A,57,3.92,0.452,0.379,0.438
+Modelo híbrido,10#3MSW_1_A,139,15.34,0.054,0.142,0.278
+Modelo híbrido,20#2GTA_1_A,98,5.0,0.362,0.434,0.417
+Modelo híbrido,30#2XEM_1_A,145,10.7,0.076,0.206,0.399
+Modelo híbrido,70#4FVS_1_A,214,9.48,0.106,0.313,0.327
+Modelo híbrido,40#3PBT_1_A,501,18.56,0.046,0.297,0.27
+Modelo híbrido,40#3H3M_1_A,89,24.49,0.0,0.02,0.483
+Modelo híbrido,20#3D0F_1_A,105,8.96,0.129,0.212,0.319
+Modelo híbrido,40#3J6B_23_W,112,8.89,0.158,0.235,0.424
+Modelo híbrido,90#2EX5_3_A,207,9.94,0.146,0.338,0.397
+Modelo híbrido,20#3PES_1_A,83,14.22,0.066,0.116,0.335
+Modelo híbrido,70#1UP9_1_A,107,7.62,0.208,0.279,0.403
+Modelo híbrido,10#1PP7_3_U,114,10.68,0.094,0.185,0.377
+Modelo híbrido,20#2KJI_1_A,50,3.66,0.48,0.381,0.516
+Modelo híbrido,90#4GHK_1_A,404,18.37,0.022,0.208,0.307
+Modelo híbrido,70#3MDN_1_A,218,17.27,0.072,0.205,0.329
+Modelo híbrido,30#2E6H_1_A,236,28.87,0.075,0.228,0.338
+Modelo híbrido,70#3KHK_1_A,488,17.86,0.033,0.235,0.288
+Modelo híbrido,40#3LX3_1_A,163,18.28,0.009,0.094,0.338
+Modelo híbrido,50#4JHY_1_A,156,9.87,0.109,0.256,0.333
+Modelo híbrido,20#1S21_1_A,165,10.95,0.094,0.24,0.281
+Modelo híbrido,40#3B1S_2_B,85,7.85,0.215,0.255,0.364
+Modelo híbrido,30#2M4M_1_A,124,8.5,0.171,0.282,0.422
+Modelo híbrido,50#3GRU_1_A,263,13.85,0.077,0.266,0.333
+Modelo híbrido,10#4JX2_1_A,402,32.99,0.04,0.214,0.306
+Modelo híbrido,20#4NYQ_1_A,153,10.19,0.078,0.219,0.299
+Modelo híbrido,40#1Z8U_1_A,90,14.66,0.058,0.108,0.393
+Modelo híbrido,30#1AMX_1_A,150,7.62,0.203,0.349,0.341
+Modelo híbrido,10#2QTV_3_D,36,33.81,0.0,0.003,0.583
+Modelo híbrido,20#1R4X_1_A,274,17.2,0.025,0.185,0.315
+Híbrido cuántico (MERA),50#2KDD_1_A,57,4.65,0.404,0.357,0.426
+Híbrido cuántico (MERA),10#3MSW_1_A,139,14.34,0.043,0.144,0.284
+Híbrido cuántico (MERA),20#2GTA_1_A,98,5.07,0.352,0.419,0.419
+Híbrido cuántico (MERA),30#2XEM_1_A,145,10.7,0.079,0.205,0.384
+Híbrido cuántico (MERA),70#4FVS_1_A,214,9.43,0.129,0.332,0.321
+Híbrido cuántico (MERA),40#3PBT_1_A,501,18.71,0.067,0.314,0.273
+Híbrido cuántico (MERA),40#3H3M_1_A,89,24.26,0.0,0.02,0.489
+Híbrido cuántico (MERA),20#3D0F_1_A,105,9.11,0.148,0.231,0.318
+Híbrido cuántico (MERA),40#3J6B_23_W,112,8.81,0.152,0.242,0.425
+Híbrido cuántico (MERA),90#2EX5_3_A,207,10.22,0.146,0.332,0.388
+Híbrido cuántico (MERA),20#3PES_1_A,83,13.69,0.063,0.12,0.337
+Híbrido cuántico (MERA),70#1UP9_1_A,107,7.77,0.196,0.281,0.392
+Híbrido cuántico (MERA),10#1PP7_3_U,114,10.54,0.103,0.187,0.378
+Híbrido cuántico (MERA),20#2KJI_1_A,50,3.54,0.49,0.399,0.512
+Híbrido cuántico (MERA),90#4GHK_1_A,404,18.22,0.025,0.215,0.326
+Híbrido cuántico (MERA),70#3MDN_1_A,218,17.32,0.078,0.206,0.334
+Híbrido cuántico (MERA),30#2E6H_1_A,236,28.89,0.077,0.232,0.338
+Híbrido cuántico (MERA),70#3KHK_1_A,488,17.64,0.016,0.241,0.294
+Híbrido cuántico (MERA),40#3LX3_1_A,163,18.26,0.012,0.098,0.34
+Híbrido cuántico (MERA),50#4JHY_1_A,156,10.05,0.099,0.25,0.308
+Híbrido cuántico (MERA),20#1S21_1_A,165,10.93,0.089,0.236,0.289
+Híbrido cuántico (MERA),40#3B1S_2_B,85,7.72,0.247,0.272,0.372
+Híbrido cuántico (MERA),30#2M4M_1_A,124,10.58,0.111,0.207,0.431
+Híbrido cuántico (MERA),50#3GRU_1_A,263,14.15,0.079,0.268,0.326
+Híbrido cuántico (MERA),10#4JX2_1_A,402,33.29,0.017,0.187,0.301
+Híbrido cuántico (MERA),20#4NYQ_1_A,153,10.04,0.098,0.23,0.304
+Híbrido cuántico (MERA),40#1Z8U_1_A,90,14.58,0.078,0.12,0.378
+Híbrido cuántico (MERA),30#1AMX_1_A,150,8.02,0.185,0.338,0.324
+Híbrido cuántico (MERA),10#2QTV_3_D,36,33.84,0.0,0.003,0.564
+Híbrido cuántico (MERA),20#1R4X_1_A,274,17.29,0.029,0.182,0.312
+Baseline clásico (Linear),50#2KDD_1_A,57,4.79,0.386,0.33,0.435
+Baseline clásico (Linear),10#3MSW_1_A,139,15.39,0.034,0.128,0.263
+Baseline clásico (Linear),20#2GTA_1_A,98,5.02,0.352,0.43,0.412
+Baseline clásico (Linear),30#2XEM_1_A,145,10.62,0.076,0.2,0.397
+Baseline clásico (Linear),70#4FVS_1_A,214,9.75,0.12,0.317,0.339
+Baseline clásico (Linear),40#3PBT_1_A,501,18.46,0.049,0.294,0.27
+Baseline clásico (Linear),40#3H3M_1_A,89,24.4,0.0,0.02,0.477
+Baseline clásico (Linear),20#3D0F_1_A,105,8.92,0.124,0.213,0.318
+Baseline clásico (Linear),40#3J6B_23_W,112,8.88,0.165,0.242,0.427
+Baseline clásico (Linear),90#2EX5_3_A,207,10.02,0.15,0.335,0.389
+Baseline clásico (Linear),20#3PES_1_A,83,13.82,0.066,0.12,0.331
+Baseline clásico (Linear),70#1UP9_1_A,107,7.76,0.192,0.278,0.404
+Baseline clásico (Linear),10#1PP7_3_U,114,10.28,0.116,0.202,0.37
+Baseline clásico (Linear),20#2KJI_1_A,50,3.72,0.485,0.393,0.511
+Baseline clásico (Linear),90#4GHK_1_A,404,18.09,0.024,0.221,0.31
+Baseline clásico (Linear),70#3MDN_1_A,218,17.42,0.069,0.204,0.332
+Baseline clásico (Linear),30#2E6H_1_A,236,28.92,0.074,0.229,0.333
+Baseline clásico (Linear),70#3KHK_1_A,488,17.61,0.016,0.216,0.295
+Baseline clásico (Linear),40#3LX3_1_A,163,18.32,0.014,0.097,0.341
+Baseline clásico (Linear),50#4JHY_1_A,156,9.96,0.103,0.251,0.322
+Baseline clásico (Linear),20#1S21_1_A,165,10.95,0.098,0.237,0.284
+Baseline clásico (Linear),40#3B1S_2_B,85,8.68,0.171,0.217,0.362
+Baseline clásico (Linear),30#2M4M_1_A,124,10.6,0.107,0.206,0.427
+Baseline clásico (Linear),50#3GRU_1_A,263,14.09,0.072,0.262,0.338
+Baseline clásico (Linear),10#4JX2_1_A,402,33.25,0.024,0.195,0.305
+Baseline clásico (Linear),20#4NYQ_1_A,153,10.25,0.077,0.222,0.309
+Baseline clásico (Linear),40#1Z8U_1_A,90,14.71,0.078,0.117,0.38
+Baseline clásico (Linear),30#1AMX_1_A,150,7.98,0.16,0.318,0.346
+Baseline clásico (Linear),10#2QTV_3_D,36,34.02,0.0,0.003,0.592
+Baseline clásico (Linear),20#1R4X_1_A,274,17.14,0.026,0.18,0.324
